@@ -13,58 +13,58 @@
 %{load:%{_sourcedir}/nodejs.srpm.macros}
 
 # === Versions of any software shipped in the main nodejs tarball
-%nodejs_define_version node 1:24.4.1-%{autorelease} -p
-
-# The following ones are generated via script;
-# expect anything between the markers to be overwritten on any update.
-
-# BEGIN automatic-version-macros  # DO NOT REMOVE THIS LINE!
-# Version from node-v24.4.1/src/node_version.h
-%global node_soversion 137
-
-# Version from node-v24.4.1/deps/ada/ada.h
-%nodejs_define_version ada 3.2.4
-# Version from node-v24.4.1/deps/brotli/c/common/version.h
-%nodejs_define_version brotli 1.1.0
-# Version from node-v24.4.1/deps/cares/include/ares_version.h
-%nodejs_define_version c_ares 1.34.5
-# Version from node-v24.4.1/deps/histogram/include/hdr/hdr_histogram_version.h
-%nodejs_define_version histogram 0.11.8
-# Version from node-v24.4.1/tools/icu/current_ver.dep
-%nodejs_define_version icu 77.1 -p
-# Version from node-v24.4.1/deps/uv/include/uv/version.h
-%nodejs_define_version libuv 1.51.0
-# Version from node-v24.4.1/deps/llhttp/include/llhttp.h
-%nodejs_define_version llhttp 9.3.0
-# Version from node-v24.4.1/deps/nghttp2/lib/includes/nghttp2/nghttp2ver.h
-%nodejs_define_version nghttp2 1.66.0
-# Version from node-v24.4.1/deps/ngtcp2/nghttp3/lib/includes/nghttp3/version.h
-%nodejs_define_version nghttp3 1.6.0
-# Version from node-v24.4.1/deps/ngtcp2/ngtcp2/lib/includes/ngtcp2/version.h
-%nodejs_define_version ngtcp2 1.11.0
-# Version from node-v24.4.1/deps/cjs-module-lexer/src/package.json
-%nodejs_define_version nodejs-cjs-module-lexer 2.1.0
-# Version from node-v24.4.1/lib/punycode.js
-%nodejs_define_version nodejs-punycode 2.1.0
-# Version from node-v24.4.1/deps/undici/src/package.json
-%nodejs_define_version nodejs-undici 7.11.0
-# Version from node-v24.4.1/deps/npm/package.json
-%nodejs_define_version npm 1:11.4.2
-# Version from node-v24.4.1/deps/sqlite/sqlite3.h
-%nodejs_define_version sqlite 3.50.2
-# Version from node-v24.4.1/deps/uvwasi/include/uvwasi.h
-%nodejs_define_version uvwasi 0.0.21
-# Version from node-v24.4.1/deps/v8/include/v8-version.h
-%nodejs_define_version v8 3:13.6.233.10 -p
-# Version from node-v24.4.1/deps/zlib/zlib.h
-%nodejs_define_version zlib 1.3.1
-# END automatic-version-macros  # DO NOT REMOVE THIS LINE!
+%nodejs_define_version node 1:24.6.0-%{autorelease} -p
 
 # Special release for sub-packages with their own version string.
 # The complex release string ensures that the subpackage release is always increasing,
 # even in the event that the main package version changes
 # while the sub-package version stays the same.
 %global nodejs_subpackage_release %{node_epoch}.%{node_version}.%{node_release}
+
+# The following ones are generated via script;
+# expect anything between the markers to be overwritten on any update.
+
+# BEGIN automatic-version-macros  # DO NOT REMOVE THIS LINE!
+# Version from node-v24.6.0/src/node_version.h
+%global node_soversion 137
+
+# Version from node-v24.6.0/deps/ada/ada.h
+%nodejs_define_version ada 3.2.7
+# Version from node-v24.6.0/deps/brotli/c/common/version.h
+%nodejs_define_version brotli 1.1.0
+# Version from node-v24.6.0/deps/cares/include/ares_version.h
+%nodejs_define_version c_ares 1.34.5
+# Version from node-v24.6.0/deps/histogram/include/hdr/hdr_histogram_version.h
+%nodejs_define_version histogram 0.11.8
+# Version from node-v24.6.0/tools/icu/current_ver.dep
+%nodejs_define_version icu 77.1 -p
+# Version from node-v24.6.0/deps/uv/include/uv/version.h
+%nodejs_define_version libuv 1.51.0
+# Version from node-v24.6.0/deps/llhttp/include/llhttp.h
+%nodejs_define_version llhttp 9.3.0
+# Version from node-v24.6.0/deps/nghttp2/lib/includes/nghttp2/nghttp2ver.h
+%nodejs_define_version nghttp2 1.66.0
+# Version from node-v24.6.0/deps/ngtcp2/nghttp3/lib/includes/nghttp3/version.h
+%nodejs_define_version nghttp3 1.6.0
+# Version from node-v24.6.0/deps/ngtcp2/ngtcp2/lib/includes/ngtcp2/version.h
+%nodejs_define_version ngtcp2 1.11.0
+# Version from node-v24.6.0/deps/cjs-module-lexer/src/package.json
+%nodejs_define_version nodejs-cjs-module-lexer 2.1.0
+# Version from node-v24.6.0/lib/punycode.js
+%nodejs_define_version nodejs-punycode 2.1.0
+# Version from node-v24.6.0/deps/undici/src/package.json
+%nodejs_define_version nodejs-undici 7.13.0
+# Version from node-v24.6.0/deps/npm/package.json
+%nodejs_define_version npm 1:11.5.1-%{nodejs_subpackage_release}
+# Version from node-v24.6.0/deps/sqlite/sqlite3.h
+%nodejs_define_version sqlite 3.50.4
+# Version from node-v24.6.0/deps/uvwasi/include/uvwasi.h
+%nodejs_define_version uvwasi 0.0.21
+# Version from node-v24.6.0/deps/v8/include/v8-version.h
+%nodejs_define_version v8 3:13.6.233.10-%{nodejs_subpackage_release} -p
+# Version from node-v24.6.0/deps/zlib/zlib.h
+%nodejs_define_version zlib 1.3.1
+# END automatic-version-macros  # DO NOT REMOVE THIS LINE!
 
 # === Conditional build – global options
 # Use all vendored dependencies when bootstrapping
@@ -134,7 +134,7 @@ Requires:   ca-certificates
 Requires:   %{name}-libs%{?_isa}      = %{node_evr}
 Recommends: %{name}-docs              = %{node_evr}
 Recommends: %{name}-full-i18n%{?_isa} = %{node_evr}
-Recommends: %{name}-npm              >= %{npm_epoch}:%{npm_version}-%{nodejs_subpackage_release}
+Recommends: %{name}-npm              >= %{npm_evr}
 # Virtual provides
 Provides:   nodejs(abi) = %{node_soversion}, nodejs(abi%{node_version_major}) = %{node_soversion}
 Provides:   nodejs(engine) = %{node_version}
@@ -162,6 +162,7 @@ Source101:      nodejs.srpm.macros
 %patchlist
 0001-Remove-unused-OpenSSL-config.patch
 0005-v8-highway-Fix-for-GCC-15-compiler-error-on-PPC8-PPC.patch
+0001-fips-disable-options.patch
 
 %description
 Node.js is a platform built on Chrome's JavaScript runtime
@@ -184,6 +185,12 @@ Requires:       openssl-devel%{?_isa}
 # Hence the Provides: in place of metapackage.
 Provides:       nodejs-devel = %{node_evr}
 
+Provides: alternative-for(nodejs-devel) = %{node_evr}
+Conflicts: alternative-for(nodejs-devel)
+Conflicts: nodejs-devel-pkg
+ # previously VP used for the same reason as alternative-for() above
+
+
 %description    devel
 Development headers for the Node.js JavaScript runtime.
 
@@ -191,11 +198,11 @@ Development headers for the Node.js JavaScript runtime.
 Summary:        v8 – development headers
 Epoch:          %{v8_epoch}
 Version:        %{v8_version}
-Release:        %{nodejs_subpackage_release}
+Release:        %{v8_release}
 
 Requires:       nodejs%{node_version_major}-devel%{?_isa} = %{node_evr}
 Requires:       nodejs%{node_version_major}-libs%{?_isa}  = %{node_evr}
-Provides:       v8-devel = %{v8_epoch}:%{v8_version}-%{nodejs_subpackage_release}
+Provides:       v8-devel = %{v8_evr}
 Obsoletes:      v8-devel <= 2:10.2.154, v8-314-devel <= 2:3.14
 
 %description -n v8-%{v8_version_major}.%{v8_version_minor}-devel
@@ -204,8 +211,8 @@ Development headers for the v8 runtime.
 %package        libs
 Summary:        Node.js and v8 libraries
 # v8 used to be a separate package; keep providing it virtually
-Provides:       v8 = %{v8_epoch}:%{v8_version}-%{nodejs_subpackage_release}
-Provides:       v8%{?_isa} = %{v8_epoch}:%{v8_version}-%{nodejs_subpackage_release}
+Provides:       v8 = %{v8_evr}
+Provides:       v8%{?_isa} = %{v8_evr}
 Obsoletes:      v8 < 1:6.7.17-10
 Provides:       libv8.so.%{v8_version_major}%{?_so_arch_suffix} = %{v8_epoch}:%{v8_version}
 Provides:       libv8_libbase.so.%{v8_version_major}%{?_so_arch_suffix} = %{v8_epoch}:%{v8_version}
@@ -234,7 +241,7 @@ The API documentation for the Node.js JavaScript runtime.
 Summary:        Node.js Package Manager
 Epoch:          %{npm_epoch}
 Version:        %{npm_version}
-Release:        %{nodejs_subpackage_release}
+Release:        %{npm_release}
 
 BuildArch:      noarch
 Requires:       nodejs%{node_version_major}         = %{node_evr}
@@ -457,11 +464,18 @@ declare NPM_DIR="${RPM_BUILD_ROOT}%{nodejs_private_sitelib}/npm"
 # Adjust npm scripts to use the renamed interpreter
 readonly SHEBANG_ERE='^#!/usr/bin/(env\s+)?node\b'
 readonly SHEBANG_FIX='#!%{_bindir}/node-%{node_version_major}'
-readonly -a npm_bin_dirs=("${NPM_DIR}/bin" "${NPM_DIR}/node_modules/node-gyp/bin")
+readonly -a npm_bin_dirs=("${NPM_DIR}/bin" "${NPM_DIR}/node_modules")
 
 find "${npm_bin_dirs[@]}" -type f \
 | xargs grep --extended-regexp --files-with-matches "${SHEBANG_ERE}" \
 | xargs sed --regexp-extended --in-place "s;${SHEBANG_ERE};${SHEBANG_FIX};"
+
+# Fix shell scripts that call 'node' as command
+readonly -a known_shell_scripts=(
+    "${NPM_DIR}/bin/node-gyp-bin/node-gyp"
+    "${NPM_DIR}/node_modules/@npmcli/run-script/lib/node-gyp-bin/node-gyp"
+)
+sed --regexp-extended --in-place 's;\bnode(\s);%{_bindir}/node-%{node_version_major}\1;' "${known_shell_scripts[@]}"
 
 # Replace npm %%{_bindir} symlinks with properly versioned ones
 # usage: relink_bin <basename> <source>
@@ -591,6 +605,21 @@ bash '%{SOURCE10}' "${RPM_BUILD_ROOT}%{_bindir}/node-%{node_version_major}" test
 
 %changelog
 ## START: Generated by rpmautospec
+* Tue Oct 14 2025 tjuhasz <tjuhasz@redhat.com> - 1:24.6.0-5
+- Correct dependency version macros
+
+* Fri Aug 29 2025 Andrei Radchenko <aradchen@redhat.com> - 1:24.6.0-3
+- spec: fix node binary calls to use versioned node-24 binary
+
+* Wed Aug 20 2025 Andrei Radchenko <aradchen@redhat.com> - 1:24.6.0-2
+- test-plan: adjust variables and filter
+
+* Tue Aug 19 2025 tjuhasz <tjuhasz@redhat.com> - 1:24.6.0-1
+- Update to version 24.6.0
+
+* Wed Aug 06 2025 Andrei Radchenko <aradchen@redhat.com> - 1:24.4.1-6
+- spec: devel packages explicitly conflicts
+
 * Wed Jul 23 2025 Jan Staněk <jstanek@redhat.com> - 1:24.4.1-4
 - Disable internet/ tests entirely
 
